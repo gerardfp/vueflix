@@ -4,7 +4,7 @@
     <router-link to="/logout">Logout</router-link>    
     <div v-for="movie in movies" :key="movie.id">
       <h3>{{ movie.title }}</h3>
-      <img :src="`http://apigerard.herokuapp.com/img/movies/thumbnailmk2/img${movie.id}.jpg`">
+      <img :src="`https://apigerard.herokuapp.com/img/movies/thumbnailmk2/img${movie.id}.jpg`">
     </div>
   </div>
   <div v-else>
