@@ -14,22 +14,21 @@ export const useAuthStore = defineStore('auth',{
   actions: {
     async login(email, password) {
       try {
-           const response = await(await fetch('https://apigerard.herokuapp.com/api/login/', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json'},
-              body: JSON.stringify({ email, password })
-          })).json();
+        const response = await(await fetch('https://apigerard.herokuapp.com/api/login/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json'},
+          body: JSON.stringify({ email, password })
+        })).json();
 
-          if (response.access_token) {
-
-            this.isAuthenticated = true;
-            this.email = email;
-            this.access_token = response.access_token;
+        if (response.access_token) {
+          this.isAuthenticated = true;
+          this.email = email;
+          this.access_token = response.access_token;
             
-            localStorage.setItem('auth', JSON.stringify({ isAuthenticated: this.isAuthenticated, access_token: this.access_token, email: this.email }));
-          }
+          localStorage.setItem('auth', JSON.stringify({ isAuthenticated: this.isAuthenticated, access_token: this.access_token, email: this.email }));
+        }
       } catch (error) {
-          this.logout();
+        this.logout();
       }
     },
     logout(){
