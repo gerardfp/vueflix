@@ -1,7 +1,7 @@
 <template>
     <div>
-        <input v-model="email" placeholder="email">
-        <input v-model="password" placeholder="password">
+        <input v-model="email" placeholder="Your email">
+        <input v-model="password" placeholder="Your password">
         <button @click="login">Login</button>
     </div>
 </template>
@@ -23,7 +23,7 @@ export default {
         }
     },
     methods: {
-        async login() {
+        login() {
             this.$auth.login(this.email, this.password);
         }
     }
