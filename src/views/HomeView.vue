@@ -2,9 +2,15 @@
   <div v-if="$auth.isAuthenticated">
     <p>Welcome {{ $auth.email }}!</p>
     <router-link to="/logout">Logout</router-link>    
-    <div v-for="movie in movies" :key="movie.id">
-      <h3>{{ movie.title }}</h3>
-      <img :src="`https://apigerard.herokuapp.com/img/movies/thumbnailmk2/img${movie.id}.jpg`">
+    <div class="movie-list">
+      <div class="movie" v-for="movie in movies" :key="movie.id">
+          <router-link :to="`/movie/${movie.id}`">
+            <h3>{{ movie.title }}</h3>
+            <img :src="`https://apigerard.herokuapp.com/img/movies/thumbnailmk2/img${movie.id}.jpg`">
+          <h3>{{ movie.title }}</h3>
+          <img :src="`https://apigerard.herokuapp.com/img/movies/thumbnailmk2/img${movie.id}.jpg`">
+          </router-link>
+      </div>
     </div>
   </div>
   <div v-else>
@@ -34,3 +40,15 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.movie-list {
+  display: grid;
+  grid-template-columns: repeat(3,300px);
+  gap: 1em;
+}
+
+.movie {
+  max-width: 300px;
+}
+</style>
